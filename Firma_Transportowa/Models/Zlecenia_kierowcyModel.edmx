@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Firma_transportowaModel4.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="zlecenia_kierowcy">
+          <Key>
+            <PropertyRef Name="id_zlecenia" />
+          </Key>
+          <Property Name="id_zlecenia" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="czas_rozpoczecia" Type="datetime" />
+          <Property Name="czas_zakonczenia" Type="datetime" />
+          <Property Name="waga_zlecenia" Type="nchar" MaxLength="10" />
+          <Property Name="id_zlecajacego" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="Firma_transportowaModel4StoreContainer">
+          <EntitySet Name="zlecenia_kierowcy" EntityType="Self.zlecenia_kierowcy" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Firma_transportowaModel4" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="zlecenia_kierowcy">
+          <Key>
+            <PropertyRef Name="id_zlecenia" />
+          </Key>
+          <Property Name="id_zlecenia" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="czas_rozpoczecia" Type="DateTime" Precision="3" />
+          <Property Name="czas_zakonczenia" Type="DateTime" Precision="3" />
+          <Property Name="waga_zlecenia" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="id_zlecajacego" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="Firma_transportowaEntities4" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="zlecenia_kierowcy" EntityType="Self.zlecenia_kierowcy" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Firma_transportowaModel4StoreContainer" CdmEntityContainer="Firma_transportowaEntities4">
+          <EntitySetMapping Name="zlecenia_kierowcy">
+            <EntityTypeMapping TypeName="Firma_transportowaModel4.zlecenia_kierowcy">
+              <MappingFragment StoreEntitySet="zlecenia_kierowcy">
+                <ScalarProperty Name="id_zlecenia" ColumnName="id_zlecenia" />
+                <ScalarProperty Name="czas_rozpoczecia" ColumnName="czas_rozpoczecia" />
+                <ScalarProperty Name="czas_zakonczenia" ColumnName="czas_zakonczenia" />
+                <ScalarProperty Name="waga_zlecenia" ColumnName="waga_zlecenia" />
+                <ScalarProperty Name="id_zlecajacego" ColumnName="id_zlecajacego" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
