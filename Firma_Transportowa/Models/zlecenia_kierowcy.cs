@@ -11,23 +11,36 @@ namespace Firma_Transportowa.Models
 {
     using System;
     using System.Collections.Generic;
-    
-    public partial class zlecenia_kierowcy
+    using System.ComponentModel;
+    using System.Runtime.CompilerServices;
+
+    public partial class zlecenia_kierowcy : INotifyPropertyChanged
     {
+        private int Id_zlecenia;
+        private DateTime Czas_rozpoczecia;
+        private DateTime Czas_zakonczenia;
+        private string Waga_zlecenia;
+        private int Id_zlecajacego;
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public zlecenia_kierowcy()
         {
             this.pracownicy_kierowcy = new HashSet<pracownicy_kierowcy>();
         }
-    
-        public int id_zlecenia { get; set; }
-        public Nullable<System.DateTime> czas_rozpoczecia { get; set; }
-        public Nullable<System.DateTime> czas_zakonczenia { get; set; }
-        public string waga_zlecenia { get; set; }
-        public int id_zlecajacego { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+
+        public int id_zlecenia { get => Id_zlecenia; set => Id_zlecenia = value; }
+        public Nullable<System.DateTime> czas_rozpoczecia { get => Czas_rozpoczecia; set { Czas_rozpoczecia = (DateTime)value; OnPropertyChanged(nameof(czas_rozpoczecia)); } }
+        public Nullable<System.DateTime> czas_zakonczenia { get => Czas_zakonczenia; set { Czas_zakonczenia = (DateTime)value; OnPropertyChanged(nameof(czas_zakonczenia)); } }
+    public string waga_zlecenia { get => Waga_zlecenia; set { Waga_zlecenia = value; OnPropertyChanged(nameof(Waga_zlecenia)); } }
+    public int id_zlecajacego { get => Id_zlecajacego; set { Id_zlecajacego = value; OnPropertyChanged(nameof(Id_zlecajacego)); } }
+
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<pracownicy_kierowcy> pracownicy_kierowcy { get; set; }
         public virtual zlecajacy zlecajacy { get; set; }
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
     }
 }

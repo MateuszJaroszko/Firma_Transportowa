@@ -7,6 +7,19 @@
         mc:Ignorable="d"
         Title="Zlecenia_kierowcy" Height="450" Width="800">
     <Grid>
-        
+        <ListView Grid.Row="1" ItemsSource="{Binding Lstzlecenia_kierowcy}">
+            <ListView.View>
+                <GridView>
+                    <GridView.Columns>
+                        <GridViewColumn Header="id_zlecenia" DisplayMemberBinding="{Binding id_zlecenia}"/>
+                        <GridViewColumn Header="czas_rozpoczecia" DisplayMemberBinding="{Binding czas_rozpoczecia}"/>
+                        <GridViewColumn Header="czas_zakonczenia" DisplayMemberBinding="{Binding czas_zakonczenia}"/>
+                        <GridViewColumn Header="waga_zlecenia" DisplayMemberBinding="{Binding waga_zlecenia}"/>
+                        <GridViewColumn Header="id_zlecajacego" DisplayMemberBinding="{Binding id_zlecajacego}"/>
+                    </GridView.Columns>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
     </Grid>
 </Window>
