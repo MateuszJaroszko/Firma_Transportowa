@@ -14,10 +14,20 @@ namespace Firma_Transportowa.Models
     
     public partial class zlecenia_kierowcy
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public zlecenia_kierowcy()
+        {
+            this.pracownicy_kierowcy = new HashSet<pracownicy_kierowcy>();
+        }
+    
         public int id_zlecenia { get; set; }
         public Nullable<System.DateTime> czas_rozpoczecia { get; set; }
         public Nullable<System.DateTime> czas_zakonczenia { get; set; }
         public string waga_zlecenia { get; set; }
         public int id_zlecajacego { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<pracownicy_kierowcy> pracownicy_kierowcy { get; set; }
+        public virtual zlecajacy zlecajacy { get; set; }
     }
 }

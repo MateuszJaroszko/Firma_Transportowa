@@ -12,12 +12,14 @@ namespace Firma_Transportowa.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class pracownicy:
+    public partial class pracownicy
     {
         public int id_pracownika { get; set; }
         public string nazwisko { get; set; }
         public Nullable<decimal> staz_pracy { get; set; }
         public string zawod { get; set; }
         public int id_kierowcy { get; set; }
+    
+        public virtual pracownicy_kierowcy pracownicy_kierowcy { get; set; }
     }
 }

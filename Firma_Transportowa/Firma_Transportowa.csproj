@@ -67,95 +67,35 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Models\FirmaTransportowaModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FirmaTransportowaModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FirmaTransportowaModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FirmaTransportowaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FirmaTransportowaModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FirmaTransportowaModel.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Models\pracownicy.cs">
-      <DependentUpon>PracownicyModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\PracownicyModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>PracownicyModel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\PracownicyModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>PracownicyModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\PracownicyModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>PracownicyModel.edmx</DependentUpon>
+      <DependentUpon>FirmaTransportowaModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\pracownicy_kierowcy.cs">
-      <DependentUpon>Pracownicy_kierowcyModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Pracownicy_kierowcyModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Pracownicy_kierowcyModel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Pracownicy_kierowcyModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Pracownicy_kierowcyModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Pracownicy_kierowcyModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Pracownicy_kierowcyModel.edmx</DependentUpon>
+      <DependentUpon>FirmaTransportowaModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\samochody.cs">
-      <DependentUpon>SamochodyModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\SamochodyModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>SamochodyModel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\SamochodyModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>SamochodyModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\SamochodyModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>SamochodyModel.edmx</DependentUpon>
+      <DependentUpon>FirmaTransportowaModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\zlecajacy.cs">
-      <DependentUpon>ZlecajacyModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ZlecajacyModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ZlecajacyModel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ZlecajacyModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ZlecajacyModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ZlecajacyModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ZlecajacyModel.edmx</DependentUpon>
+      <DependentUpon>FirmaTransportowaModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\zlecenia_kierowcy.cs">
-      <DependentUpon>Zlecenia_kierowcyModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Zlecenia_kierowcyModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Zlecenia_kierowcyModel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Zlecenia_kierowcyModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Zlecenia_kierowcyModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Zlecenia_kierowcyModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Zlecenia_kierowcyModel.edmx</DependentUpon>
+      <DependentUpon>FirmaTransportowaModel.tt</DependentUpon>
     </Compile>
     <Compile Include="View\FirmaTransportowa.xaml.cs">
       <DependentUpon>FirmaTransportowa.xaml</DependentUpon>
@@ -222,40 +162,12 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EntityDeploy Include="Models\PracownicyModel.edmx">
+    <EntityDeploy Include="Models\FirmaTransportowaModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>PracownicyModel.Designer.cs</LastGenOutput>
+      <LastGenOutput>FirmaTransportowaModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="Models\PracownicyModel.edmx.diagram">
-      <DependentUpon>PracownicyModel.edmx</DependentUpon>
-    </None>
-    <EntityDeploy Include="Models\Pracownicy_kierowcyModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Pracownicy_kierowcyModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <None Include="Models\Pracownicy_kierowcyModel.edmx.diagram">
-      <DependentUpon>Pracownicy_kierowcyModel.edmx</DependentUpon>
-    </None>
-    <EntityDeploy Include="Models\SamochodyModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>SamochodyModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <None Include="Models\SamochodyModel.edmx.diagram">
-      <DependentUpon>SamochodyModel.edmx</DependentUpon>
-    </None>
-    <EntityDeploy Include="Models\ZlecajacyModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>ZlecajacyModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <None Include="Models\ZlecajacyModel.edmx.diagram">
-      <DependentUpon>ZlecajacyModel.edmx</DependentUpon>
-    </None>
-    <EntityDeploy Include="Models\Zlecenia_kierowcyModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Zlecenia_kierowcyModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <None Include="Models\Zlecenia_kierowcyModel.edmx.diagram">
-      <DependentUpon>Zlecenia_kierowcyModel.edmx</DependentUpon>
+    <None Include="Models\FirmaTransportowaModel.edmx.diagram">
+      <DependentUpon>FirmaTransportowaModel.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -270,59 +182,19 @@
     <Folder Include="ViewModels\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Models\PracownicyModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>PracownicyModel.edmx</DependentUpon>
-      <LastGenOutput>PracownicyModel.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Models\PracownicyModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>PracownicyModel.edmx</DependentUpon>
-      <LastGenOutput>PracownicyModel.cs</LastGenOutput>
-    </Content>
-    <Content Include="Models\Pracownicy_kierowcyModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Pracownicy_kierowcyModel.edmx</DependentUpon>
-      <LastGenOutput>Pracownicy_kierowcyModel.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Models\Pracownicy_kierowcyModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Pracownicy_kierowcyModel.edmx</DependentUpon>
-      <LastGenOutput>Pracownicy_kierowcyModel.cs</LastGenOutput>
-    </Content>
-    <Content Include="Models\SamochodyModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>SamochodyModel.edmx</DependentUpon>
-      <LastGenOutput>SamochodyModel.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Models\SamochodyModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>SamochodyModel.edmx</DependentUpon>
-      <LastGenOutput>SamochodyModel.cs</LastGenOutput>
-    </Content>
-    <Content Include="Models\ZlecajacyModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ZlecajacyModel.edmx</DependentUpon>
-      <LastGenOutput>ZlecajacyModel.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Models\ZlecajacyModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ZlecajacyModel.edmx</DependentUpon>
-      <LastGenOutput>ZlecajacyModel.cs</LastGenOutput>
-    </Content>
-    <Content Include="Models\Zlecenia_kierowcyModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Zlecenia_kierowcyModel.edmx</DependentUpon>
-      <LastGenOutput>Zlecenia_kierowcyModel.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Models\Zlecenia_kierowcyModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Zlecenia_kierowcyModel.edmx</DependentUpon>
-      <LastGenOutput>Zlecenia_kierowcyModel.cs</LastGenOutput>
-    </Content>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+    <Content Include="Models\FirmaTransportowaModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>FirmaTransportowaModel.edmx</DependentUpon>
+      <LastGenOutput>FirmaTransportowaModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\FirmaTransportowaModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>FirmaTransportowaModel.edmx</DependentUpon>
+      <LastGenOutput>FirmaTransportowaModel.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

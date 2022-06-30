@@ -1,0 +1,372 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Firma_transportowaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="pracownicy">
+          <Key>
+            <PropertyRef Name="id_pracownika" />
+          </Key>
+          <Property Name="id_pracownika" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nazwisko" Type="nchar" MaxLength="20" />
+          <Property Name="staz_pracy" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="zawod" Type="nchar" MaxLength="20" />
+          <Property Name="id_kierowcy" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="pracownicy_kierowcy">
+          <Key>
+            <PropertyRef Name="id_kierowcy" />
+          </Key>
+          <Property Name="id_kierowcy" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nr_telefonu" Type="nchar" MaxLength="9" />
+          <Property Name="kat_prawa_jazdy" Type="nchar" MaxLength="1" />
+          <Property Name="id_samochodu" Type="int" Nullable="false" />
+          <Property Name="id_zlecenia" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="samochody">
+          <Key>
+            <PropertyRef Name="id_samochodu" />
+          </Key>
+          <Property Name="id_samochodu" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nr_rejestracyjny" Type="nchar" MaxLength="7" />
+          <Property Name="ladownosc" Type="nchar" MaxLength="20" />
+          <Property Name="wiek_pojazdu" Type="nchar" MaxLength="2" />
+        </EntityType>
+        <EntityType Name="zlecajacy">
+          <Key>
+            <PropertyRef Name="id_zlecajacego" />
+          </Key>
+          <Property Name="id_zlecajacego" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nazwa_firmy" Type="nchar" MaxLength="10" />
+          <Property Name="NIP" Type="decimal" Precision="10" Scale="0" />
+        </EntityType>
+        <EntityType Name="zlecenia_kierowcy">
+          <Key>
+            <PropertyRef Name="id_zlecenia" />
+          </Key>
+          <Property Name="id_zlecenia" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="czas_rozpoczecia" Type="datetime" />
+          <Property Name="czas_zakonczenia" Type="datetime" />
+          <Property Name="waga_zlecenia" Type="nchar" MaxLength="10" />
+          <Property Name="id_zlecajacego" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_pracownicy_kierowcy_samochody">
+          <End Role="samochody" Type="Self.samochody" Multiplicity="1" />
+          <End Role="pracownicy_kierowcy" Type="Self.pracownicy_kierowcy" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="samochody">
+              <PropertyRef Name="id_samochodu" />
+            </Principal>
+            <Dependent Role="pracownicy_kierowcy">
+              <PropertyRef Name="id_kierowcy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_pracownicy_kierowcy_zlecenia_kierowcy">
+          <End Role="zlecenia_kierowcy" Type="Self.zlecenia_kierowcy" Multiplicity="1" />
+          <End Role="pracownicy_kierowcy" Type="Self.pracownicy_kierowcy" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="zlecenia_kierowcy">
+              <PropertyRef Name="id_zlecenia" />
+            </Principal>
+            <Dependent Role="pracownicy_kierowcy">
+              <PropertyRef Name="id_zlecenia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_pracownicy_pracownicy_kierowcy">
+          <End Role="pracownicy_kierowcy" Type="Self.pracownicy_kierowcy" Multiplicity="1" />
+          <End Role="pracownicy" Type="Self.pracownicy" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pracownicy_kierowcy">
+              <PropertyRef Name="id_kierowcy" />
+            </Principal>
+            <Dependent Role="pracownicy">
+              <PropertyRef Name="id_kierowcy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_zlecajacy_zlecajacy">
+          <End Role="zlecajacy" Type="Self.zlecajacy" Multiplicity="1" />
+          <End Role="zlecajacy1" Type="Self.zlecajacy" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="zlecajacy">
+              <PropertyRef Name="id_zlecajacego" />
+            </Principal>
+            <Dependent Role="zlecajacy1">
+              <PropertyRef Name="id_zlecajacego" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_zlecenia_kierowcy_zlecajacy">
+          <End Role="zlecajacy" Type="Self.zlecajacy" Multiplicity="1" />
+          <End Role="zlecenia_kierowcy" Type="Self.zlecenia_kierowcy" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="zlecajacy">
+              <PropertyRef Name="id_zlecajacego" />
+            </Principal>
+            <Dependent Role="zlecenia_kierowcy">
+              <PropertyRef Name="id_zlecajacego" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Firma_transportowaModelStoreContainer">
+          <EntitySet Name="pracownicy" EntityType="Self.pracownicy" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="pracownicy_kierowcy" EntityType="Self.pracownicy_kierowcy" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="samochody" EntityType="Self.samochody" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="zlecajacy" EntityType="Self.zlecajacy" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="zlecenia_kierowcy" EntityType="Self.zlecenia_kierowcy" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_pracownicy_kierowcy_samochody" Association="Self.FK_pracownicy_kierowcy_samochody">
+            <End Role="samochody" EntitySet="samochody" />
+            <End Role="pracownicy_kierowcy" EntitySet="pracownicy_kierowcy" />
+          </AssociationSet>
+          <AssociationSet Name="FK_pracownicy_kierowcy_zlecenia_kierowcy" Association="Self.FK_pracownicy_kierowcy_zlecenia_kierowcy">
+            <End Role="zlecenia_kierowcy" EntitySet="zlecenia_kierowcy" />
+            <End Role="pracownicy_kierowcy" EntitySet="pracownicy_kierowcy" />
+          </AssociationSet>
+          <AssociationSet Name="FK_pracownicy_pracownicy_kierowcy" Association="Self.FK_pracownicy_pracownicy_kierowcy">
+            <End Role="pracownicy_kierowcy" EntitySet="pracownicy_kierowcy" />
+            <End Role="pracownicy" EntitySet="pracownicy" />
+          </AssociationSet>
+          <AssociationSet Name="FK_zlecajacy_zlecajacy" Association="Self.FK_zlecajacy_zlecajacy">
+            <End Role="zlecajacy" EntitySet="zlecajacy" />
+            <End Role="zlecajacy1" EntitySet="zlecajacy" />
+          </AssociationSet>
+          <AssociationSet Name="FK_zlecenia_kierowcy_zlecajacy" Association="Self.FK_zlecenia_kierowcy_zlecajacy">
+            <End Role="zlecajacy" EntitySet="zlecajacy" />
+            <End Role="zlecenia_kierowcy" EntitySet="zlecenia_kierowcy" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Firma_transportowaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="pracownicy">
+          <Key>
+            <PropertyRef Name="id_pracownika" />
+          </Key>
+          <Property Name="id_pracownika" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nazwisko" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="staz_pracy" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="zawod" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="id_kierowcy" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="pracownicy_kierowcy" Relationship="Self.FK_pracownicy_pracownicy_kierowcy" FromRole="pracownicy" ToRole="pracownicy_kierowcy" />
+        </EntityType>
+        <EntityType Name="pracownicy_kierowcy">
+          <Key>
+            <PropertyRef Name="id_kierowcy" />
+          </Key>
+          <Property Name="id_kierowcy" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nr_telefonu" Type="String" MaxLength="9" FixedLength="true" Unicode="true" />
+          <Property Name="kat_prawa_jazdy" Type="String" MaxLength="1" FixedLength="true" Unicode="true" />
+          <Property Name="id_samochodu" Type="Int32" Nullable="false" />
+          <Property Name="id_zlecenia" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="pracownicy" Relationship="Self.FK_pracownicy_pracownicy_kierowcy" FromRole="pracownicy_kierowcy" ToRole="pracownicy" />
+          <NavigationProperty Name="samochody" Relationship="Self.FK_pracownicy_kierowcy_samochody" FromRole="pracownicy_kierowcy" ToRole="samochody" />
+          <NavigationProperty Name="zlecenia_kierowcy" Relationship="Self.FK_pracownicy_kierowcy_zlecenia_kierowcy" FromRole="pracownicy_kierowcy" ToRole="zlecenia_kierowcy" />
+        </EntityType>
+        <EntityType Name="samochody">
+          <Key>
+            <PropertyRef Name="id_samochodu" />
+          </Key>
+          <Property Name="id_samochodu" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nr_rejestracyjny" Type="String" MaxLength="7" FixedLength="true" Unicode="true" />
+          <Property Name="ladownosc" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="wiek_pojazdu" Type="String" MaxLength="2" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="pracownicy_kierowcy" Relationship="Self.FK_pracownicy_kierowcy_samochody" FromRole="samochody" ToRole="pracownicy_kierowcy" />
+        </EntityType>
+        <EntityType Name="zlecajacy">
+          <Key>
+            <PropertyRef Name="id_zlecajacego" />
+          </Key>
+          <Property Name="id_zlecajacego" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nazwa_firmy" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="NIP" Type="Decimal" Precision="10" Scale="0" />
+          <NavigationProperty Name="zlecajacy1" Relationship="Self.FK_zlecajacy_zlecajacy" FromRole="zlecajacy" ToRole="zlecajacy1" />
+          <NavigationProperty Name="zlecajacy2" Relationship="Self.FK_zlecajacy_zlecajacy" FromRole="zlecajacy1" ToRole="zlecajacy" />
+          <NavigationProperty Name="zlecenia_kierowcy" Relationship="Self.FK_zlecenia_kierowcy_zlecajacy" FromRole="zlecajacy" ToRole="zlecenia_kierowcy" />
+        </EntityType>
+        <EntityType Name="zlecenia_kierowcy">
+          <Key>
+            <PropertyRef Name="id_zlecenia" />
+          </Key>
+          <Property Name="id_zlecenia" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="czas_rozpoczecia" Type="DateTime" Precision="3" />
+          <Property Name="czas_zakonczenia" Type="DateTime" Precision="3" />
+          <Property Name="waga_zlecenia" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="id_zlecajacego" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="pracownicy_kierowcy" Relationship="Self.FK_pracownicy_kierowcy_zlecenia_kierowcy" FromRole="zlecenia_kierowcy" ToRole="pracownicy_kierowcy" />
+          <NavigationProperty Name="zlecajacy" Relationship="Self.FK_zlecenia_kierowcy_zlecajacy" FromRole="zlecenia_kierowcy" ToRole="zlecajacy" />
+        </EntityType>
+        <Association Name="FK_pracownicy_pracownicy_kierowcy">
+          <End Role="pracownicy_kierowcy" Type="Self.pracownicy_kierowcy" Multiplicity="1" />
+          <End Role="pracownicy" Type="Self.pracownicy" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pracownicy_kierowcy">
+              <PropertyRef Name="id_kierowcy" />
+            </Principal>
+            <Dependent Role="pracownicy">
+              <PropertyRef Name="id_kierowcy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_pracownicy_kierowcy_samochody">
+          <End Role="samochody" Type="Self.samochody" Multiplicity="1" />
+          <End Role="pracownicy_kierowcy" Type="Self.pracownicy_kierowcy" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="samochody">
+              <PropertyRef Name="id_samochodu" />
+            </Principal>
+            <Dependent Role="pracownicy_kierowcy">
+              <PropertyRef Name="id_kierowcy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_pracownicy_kierowcy_zlecenia_kierowcy">
+          <End Role="zlecenia_kierowcy" Type="Self.zlecenia_kierowcy" Multiplicity="1" />
+          <End Role="pracownicy_kierowcy" Type="Self.pracownicy_kierowcy" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="zlecenia_kierowcy">
+              <PropertyRef Name="id_zlecenia" />
+            </Principal>
+            <Dependent Role="pracownicy_kierowcy">
+              <PropertyRef Name="id_zlecenia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_zlecajacy_zlecajacy">
+          <End Role="zlecajacy" Type="Self.zlecajacy" Multiplicity="1" />
+          <End Role="zlecajacy1" Type="Self.zlecajacy" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="zlecajacy">
+              <PropertyRef Name="id_zlecajacego" />
+            </Principal>
+            <Dependent Role="zlecajacy1">
+              <PropertyRef Name="id_zlecajacego" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_zlecenia_kierowcy_zlecajacy">
+          <End Role="zlecajacy" Type="Self.zlecajacy" Multiplicity="1" />
+          <End Role="zlecenia_kierowcy" Type="Self.zlecenia_kierowcy" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="zlecajacy">
+              <PropertyRef Name="id_zlecajacego" />
+            </Principal>
+            <Dependent Role="zlecenia_kierowcy">
+              <PropertyRef Name="id_zlecajacego" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Firma_transportowaEntities5" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="pracownicy" EntityType="Self.pracownicy" />
+          <EntitySet Name="pracownicy_kierowcy" EntityType="Self.pracownicy_kierowcy" />
+          <EntitySet Name="samochody" EntityType="Self.samochody" />
+          <EntitySet Name="zlecajacy" EntityType="Self.zlecajacy" />
+          <EntitySet Name="zlecenia_kierowcy" EntityType="Self.zlecenia_kierowcy" />
+          <AssociationSet Name="FK_pracownicy_pracownicy_kierowcy" Association="Self.FK_pracownicy_pracownicy_kierowcy">
+            <End Role="pracownicy_kierowcy" EntitySet="pracownicy_kierowcy" />
+            <End Role="pracownicy" EntitySet="pracownicy" />
+          </AssociationSet>
+          <AssociationSet Name="FK_pracownicy_kierowcy_samochody" Association="Self.FK_pracownicy_kierowcy_samochody">
+            <End Role="samochody" EntitySet="samochody" />
+            <End Role="pracownicy_kierowcy" EntitySet="pracownicy_kierowcy" />
+          </AssociationSet>
+          <AssociationSet Name="FK_pracownicy_kierowcy_zlecenia_kierowcy" Association="Self.FK_pracownicy_kierowcy_zlecenia_kierowcy">
+            <End Role="zlecenia_kierowcy" EntitySet="zlecenia_kierowcy" />
+            <End Role="pracownicy_kierowcy" EntitySet="pracownicy_kierowcy" />
+          </AssociationSet>
+          <AssociationSet Name="FK_zlecajacy_zlecajacy" Association="Self.FK_zlecajacy_zlecajacy">
+            <End Role="zlecajacy" EntitySet="zlecajacy" />
+            <End Role="zlecajacy1" EntitySet="zlecajacy" />
+          </AssociationSet>
+          <AssociationSet Name="FK_zlecenia_kierowcy_zlecajacy" Association="Self.FK_zlecenia_kierowcy_zlecajacy">
+            <End Role="zlecajacy" EntitySet="zlecajacy" />
+            <End Role="zlecenia_kierowcy" EntitySet="zlecenia_kierowcy" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Firma_transportowaModelStoreContainer" CdmEntityContainer="Firma_transportowaEntities5">
+          <EntitySetMapping Name="pracownicy">
+            <EntityTypeMapping TypeName="Firma_transportowaModel.pracownicy">
+              <MappingFragment StoreEntitySet="pracownicy">
+                <ScalarProperty Name="id_pracownika" ColumnName="id_pracownika" />
+                <ScalarProperty Name="nazwisko" ColumnName="nazwisko" />
+                <ScalarProperty Name="staz_pracy" ColumnName="staz_pracy" />
+                <ScalarProperty Name="zawod" ColumnName="zawod" />
+                <ScalarProperty Name="id_kierowcy" ColumnName="id_kierowcy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="pracownicy_kierowcy">
+            <EntityTypeMapping TypeName="Firma_transportowaModel.pracownicy_kierowcy">
+              <MappingFragment StoreEntitySet="pracownicy_kierowcy">
+                <ScalarProperty Name="id_kierowcy" ColumnName="id_kierowcy" />
+                <ScalarProperty Name="nr_telefonu" ColumnName="nr_telefonu" />
+                <ScalarProperty Name="kat_prawa_jazdy" ColumnName="kat_prawa_jazdy" />
+                <ScalarProperty Name="id_samochodu" ColumnName="id_samochodu" />
+                <ScalarProperty Name="id_zlecenia" ColumnName="id_zlecenia" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="samochody">
+            <EntityTypeMapping TypeName="Firma_transportowaModel.samochody">
+              <MappingFragment StoreEntitySet="samochody">
+                <ScalarProperty Name="id_samochodu" ColumnName="id_samochodu" />
+                <ScalarProperty Name="nr_rejestracyjny" ColumnName="nr_rejestracyjny" />
+                <ScalarProperty Name="ladownosc" ColumnName="ladownosc" />
+                <ScalarProperty Name="wiek_pojazdu" ColumnName="wiek_pojazdu" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="zlecajacy">
+            <EntityTypeMapping TypeName="Firma_transportowaModel.zlecajacy">
+              <MappingFragment StoreEntitySet="zlecajacy">
+                <ScalarProperty Name="id_zlecajacego" ColumnName="id_zlecajacego" />
+                <ScalarProperty Name="nazwa_firmy" ColumnName="nazwa_firmy" />
+                <ScalarProperty Name="NIP" ColumnName="NIP" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="zlecenia_kierowcy">
+            <EntityTypeMapping TypeName="Firma_transportowaModel.zlecenia_kierowcy">
+              <MappingFragment StoreEntitySet="zlecenia_kierowcy">
+                <ScalarProperty Name="id_zlecenia" ColumnName="id_zlecenia" />
+                <ScalarProperty Name="czas_rozpoczecia" ColumnName="czas_rozpoczecia" />
+                <ScalarProperty Name="czas_zakonczenia" ColumnName="czas_zakonczenia" />
+                <ScalarProperty Name="waga_zlecenia" ColumnName="waga_zlecenia" />
+                <ScalarProperty Name="id_zlecajacego" ColumnName="id_zlecajacego" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

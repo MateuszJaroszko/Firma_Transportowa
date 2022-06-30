@@ -13,10 +13,10 @@ namespace Firma_Transportowa.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class Firma_transportowaEntities4 : DbContext
+    public partial class Firma_transportowaEntities5 : DbContext
     {
-        public Firma_transportowaEntities4()
-            : base("name=Firma_transportowaEntities4")
+        public Firma_transportowaEntities5()
+            : base("name=Firma_transportowaEntities5")
         {
         }
     
@@ -25,6 +25,10 @@ namespace Firma_Transportowa.Models
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<pracownicy> pracownicy { get; set; }
+        public virtual DbSet<pracownicy_kierowcy> pracownicy_kierowcy { get; set; }
+        public virtual DbSet<samochody> samochody { get; set; }
+        public virtual DbSet<zlecajacy> zlecajacy { get; set; }
         public virtual DbSet<zlecenia_kierowcy> zlecenia_kierowcy { get; set; }
     }
 }

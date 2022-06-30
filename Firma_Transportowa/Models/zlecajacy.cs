@@ -14,11 +14,19 @@ namespace Firma_Transportowa.Models
     
     public partial class zlecajacy
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public zlecajacy()
+        {
+            this.zlecenia_kierowcy = new HashSet<zlecenia_kierowcy>();
+        }
+    
         public int id_zlecajacego { get; set; }
         public string nazwa_firmy { get; set; }
         public Nullable<decimal> NIP { get; set; }
     
         public virtual zlecajacy zlecajacy1 { get; set; }
         public virtual zlecajacy zlecajacy2 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<zlecenia_kierowcy> zlecenia_kierowcy { get; set; }
     }
 }

@@ -18,5 +18,7 @@ namespace Firma_Transportowa.Models
         public string nr_rejestracyjny { get; set; }
         public string ladownosc { get; set; }
         public string wiek_pojazdu { get; set; }
+    
+        public virtual pracownicy_kierowcy pracownicy_kierowcy { get; set; }
     }
 }
