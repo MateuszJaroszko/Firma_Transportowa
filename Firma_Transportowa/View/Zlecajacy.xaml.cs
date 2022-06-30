@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Firma_Transportowa.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,13 +16,14 @@ using System.Windows.Shapes;
 namespace Firma_Transportowa.View
 {
     /// <summary>
-    /// Logika interakcji dla klasy Zlecenia.xaml
+    /// Logika interakcji dla klasy Zlecajacy.xaml
     /// </summary>
-    public partial class Zlecenia : Window
+    public partial class Zlecajacy : Window
     {
-        public Zlecenia()
+        public Zlecajacy()
         {
             InitializeComponent();
+            DataContext = new zlecajacyViewModel();
         }
     }
 }

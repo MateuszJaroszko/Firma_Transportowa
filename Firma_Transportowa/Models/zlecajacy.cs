@@ -11,22 +11,37 @@ namespace Firma_Transportowa.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+    using System.Runtime.CompilerServices;
+
     public partial class zlecajacy
     {
+        private int Id_zlecajacego;
+        private string Nazwa_firmy;
+        private decimal Nip;
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public zlecajacy()
         {
             this.zlecenia_kierowcy = new HashSet<zlecenia_kierowcy>();
         }
-    
-        public int id_zlecajacego { get; set; }
-        public string nazwa_firmy { get; set; }
-        public Nullable<decimal> NIP { get; set; }
-    
+
+        public int id_zlecajacego { get => Id_zlecajacego; set { Id_zlecajacego = value; OnPropertyChanged(nameof(id_zlecajacego)); }
+}
+        public string nazwa_firmy { get => Nazwa_firmy; set { Nazwa_firmy = value; OnPropertyChanged(nameof(nazwa_firmy)); }
+}
+        public Nullable<decimal> NIP { get => Nip; set { Nip = (decimal)value; OnPropertyChanged(nameof(NIP)); }
+}
+
         public virtual zlecajacy zlecajacy1 { get; set; }
         public virtual zlecajacy zlecajacy2 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<zlecenia_kierowcy> zlecenia_kierowcy { get; set; }
+        
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
     }
 }

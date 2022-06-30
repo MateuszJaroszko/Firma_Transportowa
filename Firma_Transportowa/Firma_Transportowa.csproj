@@ -114,8 +114,8 @@
     <Compile Include="View\Samochody.xaml.cs">
       <DependentUpon>Samochody.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Zlecenia.xaml.cs">
-      <DependentUpon>Zlecenia.xaml</DependentUpon>
+    <Compile Include="View\Zlecajacy.xaml.cs">
+      <DependentUpon>Zlecajacy.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Zlecenia_kierowcy.xaml.cs">
       <DependentUpon>Zlecenia_kierowcy.xaml</DependentUpon>
@@ -140,7 +140,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Zlecenia.xaml">
+    <Page Include="View\Zlecajacy.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
