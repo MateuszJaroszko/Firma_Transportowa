@@ -99,6 +99,9 @@
     </Compile>
     <Compile Include="ViewModels\pracownicyViewModel.cs" />
     <Compile Include="ViewModels\pracownicy_kierowcyViewModel.cs" />
+    <Compile Include="ViewModels\samochodyViewModel.cs" />
+    <Compile Include="ViewModels\zlecajacyViewModel.cs" />
+    <Compile Include="ViewModels\zlecenia_kierowcyViewModel.cs" />
     <Compile Include="View\FirmaTransportowa.xaml.cs">
       <DependentUpon>FirmaTransportowa.xaml</DependentUpon>
     </Compile>

@@ -7,6 +7,18 @@
         mc:Ignorable="d"
         Title="Samochody" Height="450" Width="800">
     <Grid>
-        
+        <ListView Grid.Row="1" ItemsSource="{Binding Lstsamochody}">
+            <ListView.View>
+                <GridView>
+                    <GridView.Columns>
+                        <GridViewColumn Header="id_samochodu" DisplayMemberBinding="{Binding id_samochodu}"/>
+                        <GridViewColumn Header="id_samochodu" DisplayMemberBinding="{Binding nr_rejestracji}"/>
+                        <GridViewColumn Header="ladownosc" DisplayMemberBinding="{Binding ladownosc}"/>
+                        <GridViewColumn Header="wiek_pojazdu" DisplayMemberBinding="{Binding wiek_pojazdu}"/>
+                    </GridView.Columns>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
     </Grid>
 </Window>
