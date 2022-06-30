@@ -11,24 +11,40 @@ namespace Firma_Transportowa.Models
 {
     using System;
     using System.Collections.Generic;
-    
-    public partial class pracownicy_kierowcy
+    using System.ComponentModel;
+    using System.Runtime.CompilerServices;
+
+    public partial class pracownicy_kierowcy : INotifyPropertyChanged
     {
+        private int Id_kierowcy;
+        private string Nr_telefonu;
+        private string Kat_prawa_jazdy;
+        private int Id_samochodu;
+        private int Id_zlecenia;
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+
         public pracownicy_kierowcy()
         {
             this.pracownicy = new HashSet<pracownicy>();
         }
-    
-        public int id_kierowcy { get; set; }
-        public string nr_telefonu { get; set; }
-        public string kat_prawa_jazdy { get; set; }
-        public int id_samochodu { get; set; }
-        public int id_zlecenia { get; set; }
-    
+
+        public int id_kierowcy { get => Id_kierowcy; set { Id_kierowcy = value; OnPropertyChanged(nameof(id_kierowcy)); } }
+        public string nr_telefonu { get => Nr_telefonu; set { Nr_telefonu = value; OnPropertyChanged(nameof(nr_telefonu)); }
+        }
+        public string kat_prawa_jazdy { get => Kat_prawa_jazdy; set { Kat_prawa_jazdy = value; OnPropertyChanged(nameof(kat_prawa_jazdy)); } }
+        public int id_samochodu { get => Id_samochodu; set { Id_samochodu = value; OnPropertyChanged(nameof(id_samochodu)); } }
+        public int id_zlecenia { get => Id_zlecenia; set { Id_zlecenia = value; OnPropertyChanged(nameof(id_zlecenia)); } }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<pracownicy> pracownicy { get; set; }
         public virtual samochody samochody { get; set; }
         public virtual zlecenia_kierowcy zlecenia_kierowcy { get; set; }
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
     }
+   
 }

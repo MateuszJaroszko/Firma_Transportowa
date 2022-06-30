@@ -7,6 +7,19 @@
         mc:Ignorable="d"
         Title="Pracownicy_kierowcy" Height="450" Width="800">
     <Grid>
-        
+        <ListView Grid.Row="1" ItemsSource="{Binding LstPracownicy_kierowcy}">
+            <ListView.View>
+                <GridView>
+                    <GridView.Columns>
+                        <GridViewColumn Header="id_pracownika" DisplayMemberBinding="{Binding id_kierowcy}"/>
+                        <GridViewColumn Header="nazwisko" DisplayMemberBinding="{Binding nr_telefonu}"/>
+                        <GridViewColumn Header="staz_pracy" DisplayMemberBinding="{Binding kat_prawa_jazdy}"/>
+                        <GridViewColumn Header="zawod" DisplayMemberBinding="{Binding id_samochodu}"/>
+                        <GridViewColumn Header="id_kierowcy" DisplayMemberBinding="{Binding id_zlecenia}"/>
+                    </GridView.Columns>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
     </Grid>
 </Window>

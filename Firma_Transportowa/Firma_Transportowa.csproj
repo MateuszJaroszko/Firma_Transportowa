@@ -98,6 +98,7 @@
       <DependentUpon>FirmaTransportowaModel.tt</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\pracownicyViewModel.cs" />
+    <Compile Include="ViewModels\pracownicy_kierowcyViewModel.cs" />
     <Compile Include="View\FirmaTransportowa.xaml.cs">
       <DependentUpon>FirmaTransportowa.xaml</DependentUpon>
     </Compile>

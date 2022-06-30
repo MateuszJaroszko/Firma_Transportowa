@@ -17,7 +17,7 @@ namespace Firma_Transportowa.Models
     public partial class pracownicy : INotifyPropertyChanged
     {
         private string Nazwisko;
-        private decimal? Staz_pracy;
+        private decimal Staz_pracy;
         private string Zawod;
         private int Id_kierowcy;
         private int Id_pracownika;
@@ -29,7 +29,7 @@ namespace Firma_Transportowa.Models
         }
 
         public string nazwisko { get => Nazwisko; set { Nazwisko = value; OnPropertyChanged(nameof(nazwisko)); } }
-        public Nullable<decimal> staz_pracy { get => Staz_pracy; set { Staz_pracy = value; OnPropertyChanged(nameof(staz_pracy)); } }
+        public Nullable<decimal> staz_pracy { get => Staz_pracy; set { Staz_pracy = (decimal)value; OnPropertyChanged(nameof(staz_pracy)); } }
         public string zawod { get => Zawod; set { Zawod = value; OnPropertyChanged(nameof(zawod)); } }
         public int id_kierowcy { get => Id_kierowcy; set { Id_kierowcy = value; OnPropertyChanged(nameof(id_kierowcy)); } }
 
