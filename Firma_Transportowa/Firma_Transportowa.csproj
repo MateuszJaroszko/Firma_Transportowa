@@ -97,6 +97,7 @@
     <Compile Include="Models\zlecenia_kierowcy.cs">
       <DependentUpon>FirmaTransportowaModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\pracownicyViewModel.cs" />
     <Compile Include="View\FirmaTransportowa.xaml.cs">
       <DependentUpon>FirmaTransportowa.xaml</DependentUpon>
     </Compile>
@@ -178,9 +179,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ViewModels\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>

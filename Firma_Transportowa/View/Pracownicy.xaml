@@ -5,8 +5,24 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Firma_Transportowa.View"
         mc:Ignorable="d"
-        Title="Pracownicy" Height="450" Width="800">
+        Title="Pracownicy" >
     <Grid>
+        <ListView Grid.Row="1" ItemsSource="{Binding LstPracownicy}">
+            <ListView.View>
+                <GridView>
+                    <GridView.Columns>
+                        <GridViewColumn Header="id_pracownika" DisplayMemberBinding="{Binding id_pracownika}"/>
+                        <GridViewColumn Header="nazwisko" DisplayMemberBinding="{Binding nazwisko}"/>
+                        <GridViewColumn Header="staz_pracy" DisplayMemberBinding="{Binding staz_pracy}"/>
+                        <GridViewColumn Header="zawod" DisplayMemberBinding="{Binding zawod}"/>
+                        <GridViewColumn Header="id_kierowcy" DisplayMemberBinding="{Binding id_kierowcy}"/>
+                    </GridView.Columns>
+                </GridView>
+            </ListView.View>
+        </ListView>
+       
         
     </Grid>
+    
+    
 </Window>

@@ -11,15 +11,38 @@ namespace Firma_Transportowa.Models
 {
     using System;
     using System.Collections.Generic;
-    
-    public partial class pracownicy
+    using System.ComponentModel;
+    using System.Runtime.CompilerServices;
+
+    public partial class pracownicy : INotifyPropertyChanged
     {
-        public int id_pracownika { get; set; }
-        public string nazwisko { get; set; }
-        public Nullable<decimal> staz_pracy { get; set; }
-        public string zawod { get; set; }
-        public int id_kierowcy { get; set; }
-    
+        private string Nazwisko;
+        private decimal? Staz_pracy;
+        private string Zawod;
+        private int Id_kierowcy;
+        private int Id_pracownika;
+
+        public int id_pracownika
+        {
+            get => Id_pracownika;
+            set { Id_pracownika = value; OnPropertyChanged(nameof(id_pracownika)); }
+        }
+
+        public string nazwisko { get => Nazwisko; set { Nazwisko = value; OnPropertyChanged(nameof(nazwisko)); } }
+        public Nullable<decimal> staz_pracy { get => Staz_pracy; set { Staz_pracy = value; OnPropertyChanged(nameof(staz_pracy)); } }
+        public string zawod { get => Zawod; set { Zawod = value; OnPropertyChanged(nameof(zawod)); } }
+        public int id_kierowcy { get => Id_kierowcy; set { Id_kierowcy = value; OnPropertyChanged(nameof(id_kierowcy)); } }
+
         public virtual pracownicy_kierowcy pracownicy_kierowcy { get; set; }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
     }
+
+
+
 }

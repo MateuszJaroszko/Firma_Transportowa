@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Firma_Transportowa.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +23,7 @@ namespace Firma_Transportowa.View
         public Pracownicy()
         {
             InitializeComponent();
+            DataContext = new pracownicyViewModel();
         }
     }
 }
