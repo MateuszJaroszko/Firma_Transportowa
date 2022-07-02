@@ -25,5 +25,11 @@ namespace Firma_Transportowa.View
             InitializeComponent();
             DataContext = new zlecenia_kierowcyViewModel();
         }
+        private void Window1_click(object sender, RoutedEventArgs e)
+        {
+            FirmaTransportowa win = new FirmaTransportowa();
+            win.Show();
+            this.Close();
+        }
     }
 }

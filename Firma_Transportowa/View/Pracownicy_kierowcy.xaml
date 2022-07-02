@@ -20,6 +20,6 @@
                 </GridView>
             </ListView.View>
         </ListView>
-
+        <Button Click="Window1_click" Content="Wróć do menu" Margin="662,379,10,10" ></Button>
     </Grid>
 </Window>

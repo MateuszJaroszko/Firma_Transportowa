@@ -17,11 +17,12 @@
                         <GridViewColumn Header="zawod" DisplayMemberBinding="{Binding zawod}"/>
                         <GridViewColumn Header="id_kierowcy" DisplayMemberBinding="{Binding id_kierowcy}"/>
                     </GridView.Columns>
+                    
                 </GridView>
             </ListView.View>
         </ListView>
-       
-        
+
+        <Button Content="Wróć do menu" Click="Window1_click" Margin="642,460,10,10"/>
     </Grid>
     
     
