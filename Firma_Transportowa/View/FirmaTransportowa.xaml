@@ -6,7 +6,12 @@
         xmlns:local="clr-namespace:Firma_Transportowa.View"
         mc:Ignorable="d"
         Title="FirmaTransportowa" Height="450" Width="800">
-    <Grid>
-        
+    <Grid Margin="10,10,0,0">
+        <TextBlock Margin="321,23,233,292">Firma Transportowa</TextBlock>
+        <Button Content="Pracownicy" Margin="43,117,613,210" Click="button1_Click" RenderTransformOrigin="0.521,1.616"/>
+        <Button Content="Pracownicy_Kierowcy" Click="button2_Click" Margin="321,117,335,210" RenderTransformOrigin="0.799,0.485"/>
+        <Button Content="Samochody" Click="button3_Click" Margin="613,117,43,210"/>
+        <Button Content="Zlecajacy" Click="button4_Click" Margin="182,251,474,76"/>
+        <Button Content="Zlecenia_kierowcy" Click="button5_Click" Margin="465,251,191,76"/>
     </Grid>
 </Window>

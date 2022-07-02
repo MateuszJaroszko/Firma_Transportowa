@@ -23,5 +23,36 @@ namespace Firma_Transportowa.View
         {
             InitializeComponent();
         }
+
+        private void button1_Click(object sender, RoutedEventArgs e)
+        {
+            Pracownicy sw = new Pracownicy();
+            sw.Show();
+            this.Close();
+        }
+        private void button2_Click(object sender, RoutedEventArgs e)
+        {
+            Pracownicy_kierowcy sw = new Pracownicy_kierowcy();
+            sw.Show();
+            this.Close();
+        }
+        private void button3_Click(object sender, RoutedEventArgs e)
+        {
+            Samochody sw = new Samochody();
+            sw.Show();
+            this.Close();
+        }
+        private void button4_Click(object sender, RoutedEventArgs e)
+        {
+            Zlecajacy sw = new Zlecajacy();
+            sw.Show();
+            this.Close();
+        }
+        private void button5_Click(object sender, RoutedEventArgs e)
+        {
+            Zlecenia_kierowcy sw = new Zlecenia_kierowcy();
+            sw.Show();
+            this.Close();
+        }
     }
 }
